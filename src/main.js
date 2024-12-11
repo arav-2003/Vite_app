@@ -5,7 +5,6 @@ import { createPinia } from 'pinia';
 
 import './assets/styles/base.css';
 import './assets/styles/layout.css';
-import './assets/styles/components.css';
 
 
 const app = createApp(App);
