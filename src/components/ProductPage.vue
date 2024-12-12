@@ -39,6 +39,17 @@
     <!-- Product List -->
     <main class="product-list">
       <h2>Products</h2>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Search for products..."
+          class="search-input"
+        />
+      </div>
+
       <div class="products" v-if="filteredProducts.length">
         <div
           class="product-card"
@@ -81,6 +92,7 @@ export default {
     const selectedCategory = ref('');
     const minPrice = ref('');
     const maxPrice = ref('');
+    const searchQuery = ref(''); // Search query binding
     const cartStore = useCartStore();
 
     const categories = computed(() => {
@@ -90,12 +102,15 @@ export default {
 
     const filteredProducts = computed(() => {
       return products.value.filter((product) => {
+        const matchesSearch = product.title
+          .toLowerCase()
+          .includes(searchQuery.value.toLowerCase());
         const matchesCategory =
           !selectedCategory.value || product.category === selectedCategory.value;
         const matchesPrice =
           (!minPrice.value || product.price >= minPrice.value) &&
           (!maxPrice.value || product.price <= maxPrice.value);
-        return matchesCategory && matchesPrice;
+        return matchesSearch && matchesCategory && matchesPrice;
       });
     });
 
@@ -130,10 +145,12 @@ export default {
       filteredProducts,
       minPrice,
       maxPrice,
+      searchQuery, // Exposing search query
     };
   },
 };
 </script>
+
 <style>
 .container {
   display: flex;
@@ -183,6 +200,23 @@ export default {
 /* Product List */
 .product-list {
   flex: 1;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.search-bar ::placeholder
+{
+  text-align: center;
+}
+
+.search-input {
+  width: 300px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .products {
