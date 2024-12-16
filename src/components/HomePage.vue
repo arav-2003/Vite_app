@@ -23,6 +23,7 @@
     text-align: center;
     height: 100vh;
     background: linear-gradient(90deg, #f66585, #fdf585);
+
     color: #fff;
     padding: 20px;
   }
