@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <p v-else>No products found!</p>
+      <p v-else>Loading products</p>
     </main>
   </div>
 </template>

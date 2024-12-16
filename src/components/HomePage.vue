@@ -22,7 +22,7 @@
     justify-content: center;
     text-align: center;
     height: 100vh;
-    background: linear-gradient(120deg, #f6d365, #fda085);
+    background: linear-gradient(90deg, #f66585, #fdf585);
     color: #fff;
     padding: 20px;
   }
@@ -41,6 +41,15 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  @media screen and (min-width: 600px){
+    #home-page
+    {
+      background: linear-gradient(90deg, #f6d365, #fda085);
+      transition:0.4s
+    }
+    
   }
   </style>
   
